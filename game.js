@@ -33,7 +33,7 @@ const bulletSpeed = 8;
 const bulletRadius = 4;
 
 // Chicken configuration
-const chickenSpawnRate = 0.02; // Probability per frame
+const chickenSpawnRate = 0.02; // Approximately 1.2 chickens per second at 60fps
 const chickenSpeed = 2;
 const chickenWidth = 40;
 const chickenHeight = 40;
@@ -245,12 +245,19 @@ function checkCollisions() {
         for (let j = chickens.length - 1; j >= 0; j--) {
             const chicken = chickens[j];
             
-            // Simple circle collision detection
-            const dx = bullet.x - (chicken.x + chicken.width / 2);
-            const dy = bullet.y - (chicken.y + chicken.height / 2);
-            const distance = Math.sqrt(dx * dx + dy * dy);
+            // Improved collision detection accounting for chicken's elliptical shape
+            const chickenCenterX = chicken.x + chicken.width / 2;
+            const chickenCenterY = chicken.y + chicken.height / 2;
+            const dx = bullet.x - chickenCenterX;
+            const dy = bullet.y - chickenCenterY;
             
-            if (distance < bullet.radius + chicken.width / 2) {
+            // Use ellipse collision: normalize distances by chicken dimensions
+            const normalizedDistance = Math.sqrt(
+                (dx * dx) / ((chicken.width / 2) * (chicken.width / 2)) + 
+                (dy * dy) / ((chicken.height / 2) * (chicken.height / 2))
+            );
+            
+            if (normalizedDistance < 1 + bullet.radius / (chicken.width / 2)) {
                 // Collision detected
                 bullets.splice(i, 1);
                 chickens.splice(j, 1);

@@ -85,7 +85,7 @@ canvas {
     height: 40px;
     top: 10%;
     left: -100px;
-    animation: float1 30s infinite linear;
+    animation: cloudFloat 30s infinite linear;
 }
 
 .cloud1::before {
@@ -108,7 +108,7 @@ canvas {
     height: 50px;
     top: 25%;
     left: -150px;
-    animation: float2 35s infinite linear;
+    animation: cloudFloat 35s infinite linear;
     animation-delay: 5s;
 }
 
@@ -132,7 +132,7 @@ canvas {
     height: 35px;
     top: 50%;
     left: -120px;
-    animation: float3 28s infinite linear;
+    animation: cloudFloat 28s infinite linear;
     animation-delay: 10s;
 }
 
@@ -156,7 +156,7 @@ canvas {
     height: 45px;
     top: 70%;
     left: -140px;
-    animation: float4 32s infinite linear;
+    animation: cloudFloat 32s infinite linear;
     animation-delay: 15s;
 }
 
@@ -174,25 +174,7 @@ canvas {
     right: 12px;
 }
 
-@keyframes float1 {
-    to {
-        left: 110%;
-    }
-}
-
-@keyframes float2 {
-    to {
-        left: 110%;
-    }
-}
-
-@keyframes float3 {
-    to {
-        left: 110%;
-    }
-}
-
-@keyframes float4 {
+@keyframes cloudFloat {
     to {
         left: 110%;
     }
