@@ -1,0 +1,181 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    overflow: hidden;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #87CEEB 0%, #E0F6FF 50%, #87CEEB 100%);
+    height: 100vh;
+    position: relative;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    position: relative;
+    z-index: 10;
+}
+
+.score-board {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 40px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 15px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 20;
+}
+
+.score, .lives {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+#score, #lives {
+    color: #ff6b6b;
+}
+
+canvas {
+    display: block;
+    background: transparent;
+    cursor: crosshair;
+}
+
+/* Cloud animations */
+.clouds {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.cloud {
+    position: absolute;
+    background: white;
+    border-radius: 100px;
+    opacity: 0.8;
+}
+
+.cloud::before,
+.cloud::after {
+    content: '';
+    position: absolute;
+    background: white;
+    border-radius: 100px;
+}
+
+/* Cloud 1 */
+.cloud1 {
+    width: 100px;
+    height: 40px;
+    top: 10%;
+    left: -100px;
+    animation: cloudFloat 30s infinite linear;
+}
+
+.cloud1::before {
+    width: 50px;
+    height: 50px;
+    top: -25px;
+    left: 10px;
+}
+
+.cloud1::after {
+    width: 60px;
+    height: 40px;
+    top: -15px;
+    right: 10px;
+}
+
+/* Cloud 2 */
+.cloud2 {
+    width: 120px;
+    height: 50px;
+    top: 25%;
+    left: -150px;
+    animation: cloudFloat 35s infinite linear;
+    animation-delay: 5s;
+}
+
+.cloud2::before {
+    width: 60px;
+    height: 60px;
+    top: -30px;
+    left: 15px;
+}
+
+.cloud2::after {
+    width: 70px;
+    height: 50px;
+    top: -20px;
+    right: 15px;
+}
+
+/* Cloud 3 */
+.cloud3 {
+    width: 90px;
+    height: 35px;
+    top: 50%;
+    left: -120px;
+    animation: cloudFloat 28s infinite linear;
+    animation-delay: 10s;
+}
+
+.cloud3::before {
+    width: 45px;
+    height: 45px;
+    top: -20px;
+    left: 10px;
+}
+
+.cloud3::after {
+    width: 55px;
+    height: 35px;
+    top: -15px;
+    right: 10px;
+}
+
+/* Cloud 4 */
+.cloud4 {
+    width: 110px;
+    height: 45px;
+    top: 70%;
+    left: -140px;
+    animation: cloudFloat 32s infinite linear;
+    animation-delay: 15s;
+}
+
+.cloud4::before {
+    width: 55px;
+    height: 55px;
+    top: -27px;
+    left: 12px;
+}
+
+.cloud4::after {
+    width: 65px;
+    height: 45px;
+    top: -18px;
+    right: 12px;
+}
+
+@keyframes cloudFloat {
+    to {
+        left: 110%;
+    }
+}
